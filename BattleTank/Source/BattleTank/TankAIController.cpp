@@ -27,7 +27,21 @@ void ATankAIController::BeginPlay()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("TankAIController MSG: Player Controlled Tank = %s"), *(PlayerTank->GetName()));
 		UE_LOG(LogTemp, Warning, TEXT("TankAIController MSG: Player Controlled Tank = %s"), *(PlayerTank->GetActorLocation().ToString()));
-		GetPawn()->FaceRotation(FRotator(100.f, 0.f, 0.f),0.f);
+	}
+}
+
+void ATankAIController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	
+	if (GetPlayerTank())
+	{
+		// move towards the player
+
+		// aim the player
+		GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+
+		// fire when ready
 	}
 }
 
