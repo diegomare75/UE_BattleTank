@@ -2,14 +2,13 @@
 
 #pragma once
 
-#include "Tank.h"
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
 
-/**
- * 
- */
+// Forward declaration
+class ATank;
+
 UCLASS()
 class BATTLETANK_API ATankPlayerController : public APlayerController
 {
@@ -33,13 +32,11 @@ private:
 	UPROPERTY(EditAnywhere)
 	float CrosshairYLocation = 0.3333f;
 	
-	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
-	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
-
 	UPROPERTY(EditAnywhere)
 	float LineTraceRange = 1000000.f;
 
-	
+	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
+	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;	
 };
 
 
